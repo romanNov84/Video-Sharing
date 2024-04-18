@@ -1,0 +1,27 @@
+<header class="header">
+    <a href="{% url 'index' %}"><img class="logo" src=" /media/uploads/profile_pics/logNavbar.png "></a>
+    <i class='bx bx-menu' id="menu-icon"></i>
+
+    <nav class="navbar">
+        <form class="form-inline my-2 my-lg-0 d-flex flex-row" method="GET" action="{% url 'video-search' %}">
+            <div class="wrapper">
+                <input class="search-input" type="search" placeholder="Search..." name="q" aria-label="Search" value="{{ request.GET.q }}" >
+                <button class="search-button" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </form>
+        {% if user.is_authenticated %}
+        <a href="{% url 'user-videos' %}">My Videos</a>
+        <a href="{% url 'video-create' %}">Upload Video</a>
+        <a href="{% url 'account_logout' %}">Sign Out</a>
+        <a href="{% url 'profile' user.profile.pk %}">Profile</a>
+        {% else %}
+        <a href="{% url 'account_signup' %}">Register</a>
+        <a href="{% url 'account_login' %}">Sign In</a>
+        <a href="{% url 'about' %}">About</a>
+        {% endif %}
+    </nav>
+</header>
+<div class="nav-bg"></div>
+
