@@ -1,0 +1,20 @@
+{% extends 'videos/base.html' %}
+
+{% block content %}
+
+	<div class="container">
+		<div class="row justify-content-center mt-5">
+			<div class="delete col-md-6 col-sm-12 col-xs-12 text-center">
+				<form method="POST" action="{% url 'delete_user_profile' request.user.username %}">
+					{% csrf_token %}
+					<legend class="border-bottom mb-4" style="color: #778899;">Delete Profile</legend>
+					<h5 style="color: #778899;">Are you sure you want to delete your profile?</h5>
+					<p style="color: #778899;">This will delete the profile forever.  This cannot be undone.</p>
+					<button class="btn btn-outline-danger btn-block" type="submit">Delete</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}
+
